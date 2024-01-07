@@ -1,0 +1,49 @@
+.text-input{
+    display:inline-table;
+    justify-content: center;
+    width: 95%;
+    margin-top: 60px;
+}
+.input-row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.file-input::file-selector-button {
+    width: 300px;
+    border-color: #555594;
+    border-width: 3px;
+    border-radius: 10px;
+    border-style: solid;
+    background-color: #0d1422;
+    cursor: pointer;
+    transition: 0.3s;
+    color: whitesmoke;
+}
+.file-input{
+    color: whitesmoke;
+}
+.file-input::file-selector-button:hover {
+    background: none repeat scroll 0 0 #6b6daf;
+    transition: 0.3s;
+    border-color:#91FA9F;
+    color: #1C1C3B;
+}
+.file-mode{
+    width: fit-content;
+    margin-top: 20px;
+    height: 40px;
+    padding-left: 5px;
+    outline: none;
+    background-color: #0d1422;
+    color: whitesmoke;
+    border-width: 3px;
+    border-image: linear-gradient(45deg, #001c53 1%, #555594) 1;
+    transition: 0.3s;
+}
+.file-mode:hover{
+    background-color: #6b6daf;
+    box-shadow: 5px 8px 8px 1px #153a3a;
+    border-image: linear-gradient(45deg, #001c53 1%, #91FA9F) 1;
+    transition: 0.3s;
+}

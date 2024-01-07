@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block head %}
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="static/css/file-scanner.css">
+  <style>
+    #love_progress { width: {{600*emotion['love']/100}}px }
+    #admiration_progress { width: {{ 600*emotion['admiration']/100 }}px }
+    #joy_progress { width: {{ 600*emotion['joy']/100 }}px }
+    #approval_progress { width: {{600*emotion['approval']/100}}px}
+    #caring_progress { width: {{600*emotion['caring']/100}}px}
+    #excitement_progress { width: {{600*emotion['excitement']/100}}px}
+    #amusement_progress { width: {{600*emotion['amusement']/100}}px}
+    #gratitude_progress { width: {{600*emotion['gratitude']/100}}px}
+    #desire_progress { width: {{600*emotion['desire']/100}}px}
+    #anger_progress { width: {{600*emotion['anger']/100}}px}
+    #optimism_progress { width: {{600*emotion['optimism']/100}}px}
+    #disapproval_progress { width: {{600*emotion['disapproval']/100}}px}
+    #grief_progress { width: {{600*emotion['grief']/100}}px}
+    #annoyance_progress { width: {{600*emotion['annoyance']/100}}px}
+    #pride_progress { width: {{600*emotion['pride']/100}}px}
+    #curiosity_progress { width: {{600*emotion['curiosity']/100}}px}
+    #neutral_progress { width: {{600*emotion['neutral']/100}}px}
+    #disgust_progress { width: {{600*emotion['disgust']/100}}px}
+    #disappointment_progress { width: {{600*emotion['disappointment']/100}}px}
+    #realization_progress { width: {{600*emotion['realization']/100}}px}
+    #fear_progress { width: {{600*emotion['fear']/100}}px}
+    #relief_progress { width: {{600*emotion['relief']/100}}px}
+    #confusion_progress { width: {{600*emotion['confusion']/100}}px}
+    #remorse_progress { width: {{600*emotion['remorse']/100}}px}
+    #embarrassment_progress { width: {{600*emotion['embarrassment']/100}}px}
+    #surprise_progress { width: {{600*emotion['surprise']/100}}px}
+    #sadness_progress { width: {{600*emotion['sadness']/100}}px}
+    #nervousness_progress { width: {{600*emotion['nervousness']/100}}px}
+  </style>
+  <style>
+    #arts_and_culture_progress { width: {{600*topics['arts_&_culture']/100}}px }
+    #fashion_and_style_progress { width: {{ 600*topics['fashion_&_style']/100 }}px }
+    #learning_and_educational_progress { width: {{ 600*topics['learning_&_educational']/100 }}px }
+    #science_and_technology_progress { width: {{600*topics['science_&_technology']/100}}px}
+    #business_and_entrepreneur_progress { width: {{600*topics['business_&_entrepreneurs']/100}}px}
+    #film_tv_and_video_progress { width: {{600*topics['film_tv_&_video']/100}}px}
+    #music_progress { width: {{600*topics['music']/100}}px}
+    #sports_progress { width: {{600*topics['sports']/100}}px}
+    #celebrity_and_pop_culture_progress { width: {{600*topics['celebrity_&_pop_culture']/100}}px}
+    #fitness_and_health_progress { width: {{600*topics['fitness_&_health']/100}}px}
+    #news_and_social_concern_progress { width: {{600*topics['news_&_social_concern']/100}}px}
+    #travel_and_adventure_progress { width: {{600*topics['travel_&_adventure']/100}}px}
+    #diaries_and_daily_life_progress { width: {{600*topics['diaries_&_daily_life']/100}}px}
+    #food_and_dining_progress { width: {{600*topics['food_&_dining']/100}}px}
+    #other_hobbies_progress { width: {{600*topics['other_hobbies']/100}}px}
+    #youth_and_student_life_progress { width: {{600*topics['youth_&_student_life']/100}}px}
+    #family_progress { width: {{600*topics['family']/100}}px}
+    #gaming_progress { width: {{600*topics['gaming']/100}}px}
+    #relationships_progress { width: {{600*topics['relationships']/100}}px}
+  </style>
+  <title>My Web</title>
+</meta>
+{% endblock %}
+{% block navbar %}
+<div class="navbar-nav">
+  <a class="nav-link" id='a-Home' aria-current="page" href="/home">Home</a>
+  <a class="nav-link" id='a-Features' href="/features">Features</a>
+  <a class="nav-link" id='a-Text' href="/text-scanner">Text scanner</a>
+  <a class="nav-link active" id='a-File'class='a' href="/file-scanner">File scanner</a>
+</div>
+{% endblock %}
+{% block content %}
+<h1>_ File Scanner _</h1>  
+<form action="#" method='post' enctype="multipart/form-data">
+    <div class="text-input">
+        <div class="input-row">
+            <input type="file" name="file" class="file-input" value="",placeholder="Select file"></input>
+        </div>
+        <div class="input-row">
+        </div>
+        
+    </div>
+  <div class="classify-button-div">       
+    <button type="submit" value="submit" name="nm" class='fill'>Classify</button>
+  </div>
+</form>
+<div class="result-labels">
+  <h4 for="" class="sentiment-label">{{sentiment}}</h4>
+  <h4 for="" class="emotion-label">{{dominant_emotion}}</h4>
+</div>
+{% if bubble_graph_topics and bubble_graph_emotions %}
+<div class="bubble_graphs_div">
+  {{ bubble_graph_topics|safe }}
+  {{ bubble_graph_emotions|safe }}
+</div>
+<div class="bubble_graphs_div">
+  {{ doughnut_graph_topics|safe }}
+</div>
+{% endif %}
+{% endblock %}

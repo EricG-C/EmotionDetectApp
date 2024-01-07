@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block head %}
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>My Web</title>
+</meta>
+{% endblock %}
+{% block navbar %}
+<div class="navbar-nav">
+  <a class="nav-link" id='a-Home' aria-current="page" href="/home">Home</a>
+  <a class="nav-link" id='a-Features' href="/features">Features</a>
+  <a class="nav-link active" id='a-Text' href="/text-scanner">Text scanner</a>
+  <a class="nav-link" id='a-File'class='a' href="/file-scanner">File scanner</a>
+</div>
+{% endblock %}
+{% block content %}
+<h1>_ Text scanner _</h1>  
+<form action="#" method='post'>
+  <div class="text-input">
+    <textarea placeholder="Input text" type="text" name="nm" class="input"></textarea>
+   </div>
+  <div class="classify-button-div">       
+    <button type="submit" value="submit" name="nm" class='fill'>Classify</button>
+  </div>
+</form>
+<p>Your text:</p>
+<div class="show-input-div">
+    <h4 for="" class="show-input">
+        {%for text in texts%}
+          {%if sentiments[texts.index(text)] == "positive"%}
+            <i class="positive">{{text}}</i>
+          {%endif%}
+          {%if sentiments[texts.index(text)] == "neutral"%}
+            <i class="neutral">{{text}}</i>
+          {%endif%}
+          {%if sentiments[texts.index(text)] == "negative"%}
+            <i class="negative">{{text}}</i>
+          {%endif%}
+        {%endfor%}
+    </h4>
+</div>
+<div class="result-labels">
+  <h4 for="" class="sentiment-label">{{sentiment}}</h4>
+  <h4 for="" class="emotion-label">{{emotion}}</h4>
+</div>
+{% if bubble_graph_topics %}
+<div class="bubble_graphs_div">
+  {{ bubble_graph_topics|safe }}
+</div>
+{% endif %}
+{% endblock %}

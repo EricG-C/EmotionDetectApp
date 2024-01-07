@@ -1,0 +1,25 @@
+.features-content{
+    width: 100%;
+    margin-top: 5%;
+}
+
+.feature-description{
+    width:fit-content;
+    border: 2px solid #91FA9F;
+    border-radius: 10px;
+    color: whitesmoke;
+    margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+.feature-description div{
+    margin: auto;
+}
+p{
+    font-size: 15px;
+    margin-top: 5px;
+}
+li{
+    list-style-type: none;
+}
